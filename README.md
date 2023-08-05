@@ -57,3 +57,50 @@ Missing nominal values were imputed with the most frequent value
 Nominal features were one-hot encoded
 
 # **Linear Regression Model** 
+The linear regression model was able to account for about 57% of the variation in the testing data (coefficient of determination / R2). In monetary terms, the model was able to predict the sales amount within a range of +/-804 rupees from the actual sales amount on the testing data (mean absolute error).
+
+![image](https://github.com/BelandyG/Food-Sales-prediction-project/assets/123032319/509616ca-c5e8-4248-acc6-07ffa7903e6a)
+
+The three largest coefficients plotted above are all one-hot encoded categorical features. This means their coefficients can be interpreted as how much the target changes if the observation belongs to that category. For the three categories above (largest to smallest):
+
+If the observation belongs to 'Outlet_Type_Supermarket Type 1', then the target sales will increase by 1006.523 rupees.
+
+If the observation belongs to 'Outlet_Type_Supermarket Type 2', then the target sales will increase by 849.785 rupees.
+
+If the observation belongs to 'Outlet_Identifier_OUT027', then the target sales will increase by 849.785 rupees.
+
+# **Random Forest Regression Model** 
+
+A random forest regression model was fit on the training data and then tested on the reserved testing data.
+
+The random forest regression model was able to account for about 60% of the variation in the testing data (coefficient of determination / R2). In monetary terms, the model was able to predict the sales amount within a range of +/-728 rupees from the actual sales amount on the testing data (mean absolute error).
+
+![image](https://github.com/BelandyG/Food-Sales-prediction-project/assets/123032319/9228a24a-08d3-4661-b5ed-3aebb043161b)
+
+For an interpretation, we keep in mind that built-in feature importances are biased toward valuing features with high-cardinality (like 'Item_MRP') over others. We also don't know the relationship of the feature to the target unless we do more EDA or employ additional tools.
+
+With those caveats aside, we can see that the most important feature for our random forest regressor model is 'Item_MRP', with a feature importance of about 0.5. Because feature importances add up to 1, this means that the model heavily relied on 'Item_MRP' to make its decisions to split nodes (about half the time).
+
+Our other top features were 'Outlet_Type_Supermarket Type 1', 'Outlet_Identifier_OUT027', 'Outlet_Type_Supermarket Type 2', and 'Outlet_Establishment_Year'. Three of these four (all save 'Outlet_Establishment_Year') were in the top 3 largest coefficients for our linear regression model.
+
+Here are the SHAP summary plots (bar and dot versions), which show the most important features to the model's prediction and a deeper dive into those features and how the values of those features are driving the model's predictions.
+
+![image](https://github.com/BelandyG/Food-Sales-prediction-project/assets/123032319/50d6d39d-072a-4502-a0bf-c20c047bab1d)
+
+The SHAP bar summary plot identified the same top five features that the random forest model relied on.
+
+![image](https://github.com/BelandyG/Food-Sales-prediction-project/assets/123032319/243145f2-e4b1-445f-a41a-5c1b95814459)
+
+The top three most important features identified by the SHAP dot plot above are:
+
+'Item_MRP': High prices (identified in red) are driving the SHAP values for rows up, meaning that they are pushing up the total sales number in that row. The reverse is true for low prices (in blue). There looks to be a very orderly spread of high-, mid-, and low-value items directing the final sales.
+
+'Outlet_Type_Supermarket Type1': The rows that belong to this categorical variable (in red) all show up on the positive side, meaning they are driving up final sales numbers. The rows that belong to other values in this category contribute to lower final sales.
+
+'Outlet_Identifier_OUT027': This particular outlet, with rows identified in red, is associated with higher final sales. Other outlets have lower sales.
+
+# **Final Recommendations**
+
+The random forest regression machine learning model is better able to predict sales data than the linear regression model, so going forward the random forest regression model should be used.
+
+
