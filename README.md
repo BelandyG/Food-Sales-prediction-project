@@ -78,9 +78,8 @@ The random forest regression model was able to account for about 60% of the vari
 
 ![image](https://github.com/BelandyG/Food-Sales-prediction-project/assets/123032319/a0036476-d711-4d26-8956-d43a8cc99e55)
 
-For an interpretation, we keep in mind that built-in feature importances are biased toward valuing features with high-cardinality (like 'Item_MRP') over others. We also don't know the relationship of the feature to the target unless we do more EDA or employ additional tools.
 
-With those caveats aside, we can see that the most important feature for our random forest regressor model is 'Item_MRP', with a feature importance of about 0.5. Because feature importances add up to 1, this means that the model heavily relied on 'Item_MRP' to make its decisions to split nodes (about half the time).
+We can see that the most important feature for our random forest regressor model is 'Item_MRP', with a feature importance of about 0.5. Because feature importances add up to 1, this means that the model heavily relied on 'Item_MRP' to make its decisions to split nodes (about half the time).
 
 Our other top features were 'Outlet_Type_Supermarket Type 1', 'Outlet_Identifier_OUT027', 'Outlet_Type_Supermarket Type 2', and 'Outlet_Establishment_Year'. Three of these four (all save 'Outlet_Establishment_Year') were in the top 3 largest coefficients for our linear regression model.
 
