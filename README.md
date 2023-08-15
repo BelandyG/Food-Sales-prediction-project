@@ -59,7 +59,8 @@ Nominal features were one-hot encoded
 # **Linear Regression Model** 
 The linear regression model was able to account for about 57% of the variation in the testing data (coefficient of determination / R2). In monetary terms, the model was able to predict the sales amount within a range of +/-804 rupees from the actual sales amount on the testing data (mean absolute error).
 
-![image](https://github.com/BelandyG/Food-Sales-prediction-project/assets/123032319/509616ca-c5e8-4248-acc6-07ffa7903e6a)
+![image](https://github.com/BelandyG/Food-Sales-prediction-project/assets/123032319/4470b191-05f5-467d-9980-1423ee994ba7)
+
 
 The three largest coefficients plotted above are all one-hot encoded categorical features. This means their coefficients can be interpreted as how much the target changes if the observation belongs to that category. For the three categories above (largest to smallest):
 
@@ -75,7 +76,7 @@ A random forest regression model was fit on the training data and then tested on
 
 The random forest regression model was able to account for about 60% of the variation in the testing data (coefficient of determination / R2). In monetary terms, the model was able to predict the sales amount within a range of +/-728 rupees from the actual sales amount on the testing data (mean absolute error).
 
-![image](https://github.com/BelandyG/Food-Sales-prediction-project/assets/123032319/9228a24a-08d3-4661-b5ed-3aebb043161b)
+![image](https://github.com/BelandyG/Food-Sales-prediction-project/assets/123032319/a0036476-d711-4d26-8956-d43a8cc99e55)
 
 For an interpretation, we keep in mind that built-in feature importances are biased toward valuing features with high-cardinality (like 'Item_MRP') over others. We also don't know the relationship of the feature to the target unless we do more EDA or employ additional tools.
 
@@ -85,11 +86,11 @@ Our other top features were 'Outlet_Type_Supermarket Type 1', 'Outlet_Identifier
 
 Here are the SHAP summary plots (bar and dot versions), which show the most important features to the model's prediction and a deeper dive into those features and how the values of those features are driving the model's predictions.
 
-![image](https://github.com/BelandyG/Food-Sales-prediction-project/assets/123032319/50d6d39d-072a-4502-a0bf-c20c047bab1d)
+![image](https://github.com/BelandyG/Food-Sales-prediction-project/assets/123032319/43668eb0-eac0-4c6f-b736-36ade391387e)
 
 The SHAP bar summary plot identified the same top five features that the random forest model relied on.
 
-![image](https://github.com/BelandyG/Food-Sales-prediction-project/assets/123032319/243145f2-e4b1-445f-a41a-5c1b95814459)
+![image](https://github.com/BelandyG/Food-Sales-prediction-project/assets/123032319/a342894a-fd74-46c7-8b1b-7d4d35a9949b)
 
 The top three most important features identified by the SHAP dot plot above are:
 
